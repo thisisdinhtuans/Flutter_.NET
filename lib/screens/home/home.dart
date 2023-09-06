@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:stock_app/screens/home/Trading/trading.dart';
 import 'package:stock_app/screens/home/assets/assets.dart';
 import 'package:stock_app/screens/home/cash_transfer/cash_transfer.dart';
+import 'package:stock_app/screens/home/drawers/left/left.dart';
 import 'package:stock_app/screens/home/market/market.dart';
 import 'package:stock_app/screens/home/watchlist/watchlist.dart';
 
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex=0;
+  final GlobalKey<ScaffoldState> _scaffoldKey=GlobalKey<ScaffoldState>();
   final List<Widget> _screens=[
     WatchListScreen(),
     MarketScreen(),
@@ -23,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     // vì là màn hình neen chúng ta return về ther Scaffold
     return Scaffold(
-
+      key:_scaffoldKey,
+      drawer: LeftDrawer(),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 IconButton(onPressed: (){
                   //Open drawer
+                  //nó có thể nhận giá trị null nên là
+                  _scaffoldKey.currentState?.openDrawer();
                 },icon:const Icon(Icons.menu)),
                 //Làm thẻ textfield để người ta search
 
@@ -65,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           )),
+          // cái này là cái ruột
           _screens[_currentIndex]
         ],
       ),
