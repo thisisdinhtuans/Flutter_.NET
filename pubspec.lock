@@ -75,6 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  infinite_scroll_tab_view:
+    dependency: "direct main"
+    description:
+      name: infinite_scroll_tab_view
+      sha256: "4fcb7388638c17fae91ef286e1064050c711b615da2f74209f142e144ba15e24"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   lints:
     dependency: transitive
     description:
@@ -186,3 +194,4 @@ packages:
     version: "0.1.4-beta"
 sdks:
   dart: ">=3.1.0 <4.0.0"
+  flutter: ">=1.17.0"
