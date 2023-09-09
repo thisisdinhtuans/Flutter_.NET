@@ -38,6 +38,16 @@ dependencies:
   #infinite_scroll_tab_view làm cái tab vuốt vuốt từ trái sang phải, rồi bấm pubget để cập nhập thư viện
   #cập nhap thư viện phải chạy lại
   infinite_scroll_tab_view: 1.0.3
+  syncfusion_flutter_datepicker: ^21.2.3
+  #để nó lưu vào bộ nhớ tạm thời, nó lưu vào trong app, gọi là dữ liệu tạm thời, lưu vào trong app mà lần sau khi bật app lên thì vẫn còn, nó như kiểu ta lưu dữ liệu của 1 file trong app ý, gọi là local storage hoặc là shared_preferences
+  shared_preferences: ^2.0.13
+  splash_screen_package:
+    #path: ./splash_screen_package #github url
+    #không lấy từ local nữa mà lấy từ github
+#    library_name:
+    git:
+      url: https://github.com/thisisdinhtuans/splash_screen_package.git
+      ref: v0.0.1
 
 dev_dependencies:
   flutter_test:
