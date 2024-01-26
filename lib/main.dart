@@ -12,15 +12,16 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
+
 Future<void> checkLoginStatus(BuildContext context) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   //Lấy trạng thái đăng nhập
   bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
   await Future.delayed(const Duration(seconds: 1));
-  if(isLoggedIn) {
+  if (isLoggedIn) {
     //Đã đăng nhập, chuyển sang màn hình HomeScreen
     //pushReplacement tức là màn hình đó thay thế luôn chứ khoong đẩy màn Home vào trong Stack, kiểu thay thế xếp chống lên nhau nhưng đây pushReplacement tức là thay thế luôn
-    if(context.mounted) {
+    if (context.mounted) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
@@ -35,6 +36,7 @@ Future<void> checkLoginStatus(BuildContext context) async {
     }
   }
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -62,12 +64,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(
-          title: 'Splasssss',
-          checkLoginStatus: checkLoginStatus),
+      home: LoginScreen(),
       // home: LoginScreen(),
       // home: HomeScreen(),
     );
   }
 }
-

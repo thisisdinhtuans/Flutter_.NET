@@ -1,4 +1,3 @@
-/*
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stock_app/screens/home/home.dart';
 import 'package:stock_app/screens/login/login.dart';
+
 // import 'package:flutter/material.dart.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,19 +19,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 2), () async{
+    Timer(const Duration(seconds: 2), () async {
       checkLoginStatus(context);
     });
   }
+
   Future<void> checkLoginStatus(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Lấy trạng thái đăng nhập
     bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
     await Future.delayed(const Duration(seconds: 1));
-    if(isLoggedIn) {
+    if (isLoggedIn) {
       //Đã đăng nhập, chuyển sang màn hình HomeScreen
       //pushReplacement tức là màn hình đó thay thế luôn chứ khoong đẩy màn Home vào trong Stack, kiểu thay thế xếp chống lên nhau nhưng đây pushReplacement tức là thay thế luôn
-      if(context.mounted) {
+      if (context.mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeScreen()),
         );
@@ -46,6 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,18 +69,17 @@ class _SplashScreenState extends State<SplashScreen> {
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       color: Colors.blue,
-                      image:DecorationImage(
-                          image: AssetImage('assets/images/logo.png')
-                      )
-                  ),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/logo.png'))),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Text(
                 //"This is splash, x = ${this.x}",
                 'This is splash 11',
                 style: TextStyle(fontSize: 30, color: Colors.white),
-
               ),
             ],
           ),
@@ -87,5 +88,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-*/
